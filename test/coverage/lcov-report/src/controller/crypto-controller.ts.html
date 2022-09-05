@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>16/17</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/10</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,50 +86,71 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ICryptos } from "./../types/cryptos-controller";
-import { Controller, Get, UseInterceptor, Action, QueryParam, Res } from "routing-controllers";
+import { Controller, Get, UseInterceptor, Action, QueryParam } from "routing-controllers";
 import "reflect-metadata";
 import axios from "axios";
 &nbsp;
 @Controller()
-@UseInterceptor(<span class="fstat-no" title="function not covered" >function (a</span>ction: Action, content: any) {
-<span class="cstat-no" title="statement not covered" >	console.log("change response...");</span>
-<span class="cstat-no" title="statement not covered" >	return content;</span>
+@UseInterceptor(function (action: Action, content: any) {
+	console.log("change response...");
+	return content;
 })
-&nbsp;
 export class CryptoController {
 	@Get("/cryptos")
-	async getCryptos(@QueryParam("page") page: number) {
-		console.log(process.env.API_URL)
+	async getCryptos(@QueryParam("page") page: number, @QueryParam("convert") convert: string) {
+		const API_URL = "https://api.nomics.com/v1";
+		const API_KEY ="66d20828f7909bf092515a53da8a40a4d0eb924a"
+&nbsp;
+		console.log(page, convert);
 		const res = await axios({
 			method: "GET",
-			url: `${process.env.API_URL}/currencies/ticker?key=${process.env.API_KEY}&amp;ids=BTC,ETH,XRP&amp;interval=1d&amp;convert=EUR&amp;platform-currency=ETH&amp;per-page=100&amp;page=${page}`,
+			url: `${API_URL}/currencies/ticker?key=${API_KEY}&amp;interval=1h&amp;convert=${convert}&amp;per-page=${page}`,
 		});
+		if(res<span class="branch-0 cbranch-no" title="branch not covered" >?.d</span>ata) {
+			console.log(res.data)
+		}else <span class="missing-if-branch" title="else path not taken" >E</span>{
+<span class="cstat-no" title="statement not covered" >			console.log('nothing')</span>
+		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		return res.data</span>
+		return res<span class="branch-0 cbranch-no" title="branch not covered" >?.d</span>ata ? res.data : <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
 	}
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -139,7 +160,7 @@ export class CryptoController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-04T13:51:13.208Z
+                at 2022-09-05T10:23:45.504Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

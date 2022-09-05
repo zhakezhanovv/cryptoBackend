@@ -5,6 +5,8 @@ import { useExpressServer } from "routing-controllers";
 import { CryptoController } from "./../../controller/crypto-controller";
 import { GlobalErrorHandler } from "../../middleware/global-error-handler";
 
+jest.useRealTimers();
+
 describe("CryptosController", () => {
 	let server;
 	beforeAll(async () => {
@@ -22,13 +24,7 @@ describe("CryptosController", () => {
 	});
 
 	it("getCryptos", (done) => {
-		request(server)
-			.get("/cryptos")
-      .query({ page: 1 })
-			.expect(204)
-			.end((err, res) => {
-				if (err) throw new Error('kek' + JSON.stringify(res.body));
-				done();
-			});
-	});
+		jest.setTimeout(30000);
+		request(server).get("/cryptos").query({ page: 1, convert: "USD" }).expect(200, done);
+	}, 30000);
 });
