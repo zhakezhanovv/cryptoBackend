@@ -1,0 +1,64 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "Crypto API",
+		"version": "v1",
+		"description": "The REST API for Dangle Panel service"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:4200",
+			"description": "Development server"
+		}
+	],
+	"tags": [
+		{
+			"name": "API functions",
+			"description": "API functions of our application"
+		}
+	],
+	"paths": {
+		"/cryptos": {
+			"get": {
+				"summary": "get the api answer from nomics",
+				"tags": ["cryptos"],
+				"parameters": [
+					{
+						"name": "page",
+						"in": "query",
+						"required": true,
+						"description": "parameter for get a answer pages",
+						"schema": {
+							"type": "number",
+							"example": 1
+						}
+					},
+					{
+						"name": "convert",
+						"in": "query",
+						"required": true,
+						"description": "parameter for get a answer convert",
+						"schema": {
+							"type": "string",
+							"example": "USD"
+						}
+					}
+				],
+				"description": "parameter page for cryptos number",
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"content": {
+						"document": {
+							"schema": {
+								"type": "string",
+								"example": "some text"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
